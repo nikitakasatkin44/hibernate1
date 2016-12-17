@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="purchaseApp">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body ng-controller="purchaseController">
+    <div class="page-header">
+        <h1> Список покупок </h1>
+    </div>
+    <div class="panel">
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input class="form-control" ng-model="text" placeholder = "Название" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input type="number" class="form-control" ng-model="price" placeholder="Цена" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input type="number" class="form-control" ng-model="quantity" placeholder="Количество" />
+                    </div>
+                    </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-3">
+                    <button class="btn btn-default" ng-click="addItem(text, price, quantity)">Добавить</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Предмет</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Куплено</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list.items">
+                    <td>{{item.purchase}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td><input type="checkbox" ng-model="item.done" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script>
+var model = {
+    items: [
+        { purchase: "Хлеб", done: false, price: 15.9, quantity: 2 },
+        { purchase: "Масло", done: false, price: 60, quantity: 1 },
+        { purchase: "Картофель", done: true, price: 22.6, quantity: 1.5 },
+        { purchase: "Сыр", done: false, price:310, quantity: 0.300 }
+    ]
+};
+var purchaseApp = angular.module("purchaseApp", []);
+    purchaseApp.controller("purchaseController", function ($scope) {
+    $scope.list = model;
+    $scope.addItem = function (text, price, quantity) {
+        price = parseFloat(price); // преобразуем введенное значение к числу
+        quantity = parseFloat(quantity);
+        if(text != "" && !isNaN(price)) // если текст установлен и введено число, то добавляем
+        {
+            $scope.list.items.push({ purchase: text, price: price, done: false, quantity: quantity });
+        }
+    }
+});
+</script>
+</body>
+</html>

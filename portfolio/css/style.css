@@ -1,0 +1,23 @@
+html {
+	background-color : rgb(203,232,107);
+}
+
+
+body {
+    font-family: 'Architects Daughter';
+    font-size: 22px;
+}
+
+h1 {
+	font-size: 40px;
+	color: rgb(204,51,63);
+	
+	
+}
+
+p {
+	font-size: 18px;
+	text-align: left
+}
+
+

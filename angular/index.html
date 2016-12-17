@@ -1,0 +1,20 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<body ng-app>
+
+
+
+<!-- Когда элемент выбран, всплывающая подсказка скрывается-->
+<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+    <!-- Это всплывающая подсказка. Она показывается только, когда значение переменной "showtooltip" – «истина» -->
+    <div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+        <!-- ng-модель связывает содержание текстового поля с моделью "value".
+         Любые изменения текстового поля будут автоматически задаваться, как значение этой модели, а также вызывать изменения других элементов страницы, связанных с ней.  -->
+        <input type="text" ng-model="value" />
+    </div>
+    <!-- Выбор метода отображения подсказки из вариантов заданных в InlineEditorController (контроллере встроенного редактора), он зависит от значения переменной "showtooltip". -->
+    <p ng-click="toggleTooltip($event)">{{value}}</p>
+</div>
+
+
+</body>

@@ -1,0 +1,5 @@
+package com.javacodegeeks.snippets.enterprise.embeddedjetty;
+
+public class ExampleServlet {
+
+}

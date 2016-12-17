@@ -1,0 +1,5 @@
+package helloHibernate;
+
+public class Employee {
+
+}
